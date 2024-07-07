@@ -1,9 +1,13 @@
 package org.example;
 
 public class Point {
-    public static String type = "Cartesian";
+    private static String type = "Cartesian";
 
     private Double x, y;
+
+    public static String getType() {
+        return type;
+    }
 
     public Double getX() {
         return x;

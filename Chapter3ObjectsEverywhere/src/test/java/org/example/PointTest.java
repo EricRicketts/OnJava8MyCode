@@ -32,4 +32,9 @@ public class PointTest {
         Assertions.assertArrayEquals(expected, results);
     }
 
+    @Test
+    public void testStaticVariable() {
+        // no object is needed to call a static method
+        Assertions.assertEquals("Cartesian", Point.getType());
+    }
 }
