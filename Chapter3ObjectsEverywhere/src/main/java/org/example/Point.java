@@ -1,6 +1,8 @@
 package org.example;
 
 public class Point {
+    public static String type = "Cartesian";
+
     private Double x, y;
 
     public Double getX() {

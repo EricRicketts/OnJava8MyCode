@@ -23,4 +23,13 @@ public class PointTest {
         Assertions.assertArrayEquals(expected, results);
     }
 
+    @Test
+    public void testSetXAndSetY() {
+        p2.setX(20.00);
+        p2.setY(30.00);
+        expected = new Double[]{20.00, 30.00};
+        results = new Double[]{p2.getX(), p2.getY()};
+        Assertions.assertArrayEquals(expected, results);
+    }
+
 }

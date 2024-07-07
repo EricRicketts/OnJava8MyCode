@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e5be03e-b009-4593-bc35-8e3961632a29" name="Changes" comment="" />
+    <list default="true" id="3e5be03e-b009-4593-bc35-8e3961632a29" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/PointTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/PointTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -23,6 +30,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -57,7 +65,7 @@
       <workItem from="1720372970786" duration="185000" />
       <workItem from="1720373190980" duration="311000" />
       <workItem from="1720373736715" duration="141000" />
-      <workItem from="1720373906420" duration="64000" />
+      <workItem from="1720373906420" duration="920000" />
     </task>
     <servers />
   </component>
