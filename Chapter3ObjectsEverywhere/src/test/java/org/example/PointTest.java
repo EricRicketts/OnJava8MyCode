@@ -37,4 +37,12 @@ public class PointTest {
         // no object is needed to call a static method
         Assertions.assertEquals("Cartesian", Point.getType());
     }
+
+    @Test
+    public void testEqualityBetweenPoints() {
+        Assertions.assertFalse(p1.equals(p2));
+        p2.setX(p1.getX());
+        p2.setY(p1.getY());
+        Assertions.assertTrue(p1.equals(p2));
+    }
 }
