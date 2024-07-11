@@ -40,9 +40,9 @@ public class PointTest {
 
     @Test
     public void testEqualityBetweenPoints() {
-        Assertions.assertFalse(p1.equals(p2));
+        Assertions.assertNotEquals(p1, p2);
         p2.setX(p1.getX());
         p2.setY(p1.getY());
-        Assertions.assertTrue(p1.equals(p2));
+        Assertions.assertEquals(p1, p2);
     }
 }
