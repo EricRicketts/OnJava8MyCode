@@ -1,5 +1,11 @@
 package org.example;
 
+import org.apache.commons.lang3.Range;
+
+import java.util.ArrayList;
+
+import static org.apache.commons.lang3.Range.*;
+
 public class IterationStatements {
 
     public static int sumFirstTenIntegers() {
@@ -28,4 +34,13 @@ public class IterationStatements {
         return sum;
     }
 
+    public static int sumFirstTenIntegersUsingForIn() {
+        int[] range = new int[10];
+        int sum = 0;
+        for (int i = 0; i < 10; i++) range[i] = i;
+        for(Integer i : range) {
+            sum += i;
+        }
+        return sum;
+    }
 }

@@ -11,20 +11,26 @@ public class testIterationStatements {
     private int results;
 
     @Test
-    public void TestWhileLoopSum() {
+    public void testWhileLoopSum() {
         results = IterationStatements.sumFirstTenIntegers();
         assertEquals(expected, results);
     }
 
     @Test
-    public void TestDoWhileLoopSum() {
+    public void testDoWhileLoopSum() {
         results = IterationStatements.sumFirstTenIntegersVersionTwo();
         assertEquals(expected, results);
     }
 
     @Test
-    public void TestForLoopSum() {
+    public void testForLoopSum() {
         results = IterationStatements.sumFirstTenIntegersVersionThree();
+        assertEquals(expected, results);
+    }
+
+    @Test
+    public void testForInLoopSum() {
+        results = IterationStatements.sumFirstTenIntegersUsingForIn();
         assertEquals(expected, results);
     }
 }
