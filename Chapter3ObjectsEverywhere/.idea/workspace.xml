@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e5be03e-b009-4593-bc35-8e3961632a29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Chapter4Operators/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Chapter4Operators/src/test/java/org/example/testTrueFalseIfElse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Chapter4Operators/src/main/java/org/example/IterationStatements.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Chapter4Operators/src/test/java/org/example/testIterationStatements.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter4Operators/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter4Operators/.idea/material_theme_project_new.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter4Operators/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter4Operators/src/main/java/org/example/TrueFalseIfElse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter4Operators/src/test/java/org/example/OperatorPrecedenceTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
