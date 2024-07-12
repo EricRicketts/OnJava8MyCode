@@ -29,8 +29,8 @@ public class DataOnlyTest {
 
     @Test
     public void testAddToD() {
-        dataOnly.addToD(5.00);
-        Assertions.assertEquals(15.00, dataOnly.getD());
+        dataOnly.addToD(5.55);
+        Assertions.assertEquals(15.55, dataOnly.getD());
     }
 
     @Test
