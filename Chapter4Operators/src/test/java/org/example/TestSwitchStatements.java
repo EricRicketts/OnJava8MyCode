@@ -15,12 +15,26 @@ import org.junit.jupiter.api.Test;
 public class TestSwitchStatements {
 
     @Test
-    public void testSwitchOnInteger() {
+    public void testSwitchForVowelsOnly() {
         int[] letterValues = {0, 4, 8, 14, 20, 24};
         String[] results = new String[letterValues.length];
         String[] expected = new String[]{
                 "a, 97: vowel", "e, 101: vowel", "i, 105: vowel",
                 "o, 111: vowel", "u, 117: vowel", "y, 121: sometimes vowel"
+        };
+        for (int i = 0; i < letterValues.length; i++) {
+            int letterValue = letterValues[i];
+            results[i] = SwitchStatements.vowelsAndConsonants(letterValue);
+        }
+        assertArrayEquals(expected, results);
+    }
+
+    @Test
+    public void testSwitchForConsonantsOnly() {
+        int[] letterValues = {1, 10, 15, 25};
+        String[] results = new String[letterValues.length];
+        String[] expected = new String[]{
+                "b, 98: consonant", "k, 107: consonant", "p, 112: consonant", "z, 122: consonant"
         };
         for (int i = 0; i < letterValues.length; i++) {
             int letterValue = letterValues[i];
