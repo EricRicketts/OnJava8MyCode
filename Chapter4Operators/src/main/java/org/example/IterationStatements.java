@@ -1,11 +1,5 @@
 package org.example;
 
-import org.apache.commons.lang3.Range;
-
-import java.util.ArrayList;
-
-import static org.apache.commons.lang3.Range.*;
-
 public class IterationStatements {
 
     public static int sumFirstTenIntegers() {
