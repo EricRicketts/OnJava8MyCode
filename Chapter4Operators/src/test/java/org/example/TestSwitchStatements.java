@@ -42,4 +42,52 @@ public class TestSwitchStatements {
         }
         assertArrayEquals(expected, results);
     }
+
+    @Test
+    public void testIsVowelOrConsonantOnlyVowels() {
+        String[] letters = new String[]{
+            "a", "A", "e", "E", "i", "I", "o", "O", "u", "U"
+        };
+        String[] results = new String[letters.length];
+        String[] expected = new String[]{
+            "a is a vowel", "A is a vowel", "e is a vowel", "E is a vowel", "i is a vowel",
+            "I is a vowel", "o is a vowel", "O is a vowel", "u is a vowel", "U is a vowel"
+        };
+        for (int i = 0; i < letters.length; i++) {
+            String letter = letters[i];
+            results[i] = SwitchStatements.isVowelOrConsonant(letter);
+        }
+        assertArrayEquals(expected, results);
+    }
+
+    @Test
+    public void testIsVowelOrConsonantOnlyConsonants() {
+        String[] letters = new String[]{
+                "b", "B", "h", "H", "n", "N", "t", "T", "x", "X"
+        };
+        String[] results = new String[letters.length];
+        String[] expected = new String[]{
+            "b is a consonant", "B is a consonant", "h is a consonant",
+            "H is a consonant", "n is a consonant", "N is a consonant",
+            "t is a consonant", "T is a consonant", "x is a consonant",
+            "X is a consonant"
+        };
+        for (int i = 0; i < letters.length; i++) {
+            String letter = letters[i];
+            results[i] = SwitchStatements.isVowelOrConsonant(letter);
+        }
+        assertArrayEquals(expected, results);
+    }
+
+    @Test
+    public void testDefaultForIsVowelOrConsonant() {
+        String[] characters = new String[]{"%", "1"};
+        String[] results = new String[characters.length];
+        String[] expected = new String[]{"% is not a letter", "1 is not a letter"};
+        for (int i = 0; i < characters.length; i++) {
+            String letter =characters[i];
+            results[i] = SwitchStatements.isVowelOrConsonant(letter);
+        }
+        assertArrayEquals(expected, results);
+    }
 }
