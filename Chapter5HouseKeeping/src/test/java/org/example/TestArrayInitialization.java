@@ -2,8 +2,9 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.Random;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestArrayInitialization {
     private final int[] a1 = {1, 2, 3, 4, 5};
@@ -28,5 +29,26 @@ public class TestArrayInitialization {
     @Test
     public void testLengthAttribute() {
         assertEquals(5, a1.length);
+    }
+
+    @Test
+    public void testArrayInitialization() {
+        Random r = new Random(10);
+        Double[] numericArray = new Double[r.nextInt(10)];
+        double[] primitiveArray = new double[r.nextInt(10)];
+        Character[] charArray = new Character[r.nextInt(10)];
+        String[] stringArray = new String[r.nextInt(10)];
+        for (Double aDouble : numericArray) {
+            assertNull(aDouble);
+        }
+        for (double v : primitiveArray) {
+            assertEquals(0.00, v);
+        }
+        for (Character c : charArray) {
+            assertNull(c);
+        }
+        for (String s1 : stringArray) {
+            assertNull(s1);
+        }
     }
 }
