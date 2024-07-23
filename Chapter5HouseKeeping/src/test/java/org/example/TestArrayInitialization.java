@@ -36,6 +36,7 @@ public class TestArrayInitialization {
         Random r = new Random(10);
         Double[] numericArray = new Double[r.nextInt(10)];
         double[] primitiveArray = new double[r.nextInt(10)];
+        char[] charPrimitiveArray = new char[r.nextInt(10)];
         Character[] charArray = new Character[r.nextInt(10)];
         String[] stringArray = new String[r.nextInt(10)];
         for (Double aDouble : numericArray) {
@@ -44,11 +45,17 @@ public class TestArrayInitialization {
         for (double v : primitiveArray) {
             assertEquals(0.00, v);
         }
+        for (char aChar : charPrimitiveArray) {
+            assertEquals(0.00, aChar);
+        }
         for (Character c : charArray) {
             assertNull(c);
         }
         for (String s1 : stringArray) {
             assertNull(s1);
+        }
+        for (Double d : numericArray) {
+            assertNull(d);
         }
     }
 }
