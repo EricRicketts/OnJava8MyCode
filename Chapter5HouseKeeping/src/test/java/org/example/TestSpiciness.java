@@ -1,10 +1,19 @@
 package org.example;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestSpiciness {
+
+    private final String[] expected = {"NOT", "MILD", "MEDIUM", "HOT", "FLAMING"};
+    Spiciness[] spiciness;
+
+    @BeforeEach
+    public void setUp() {
+        spiciness = Spiciness.values();
+    }
 
     @Test
     public void testOneSpicinessValue() {
@@ -16,13 +25,11 @@ public class TestSpiciness {
 
     @Test
     public void testSpicinessValuesAndOrdinals() {
-        String[] expected = {"NOT", "MILD", "MEDIUM", "HOT", "FLAMING"};
-        Spiciness[] s = Spiciness.values();
-        for (int index = 0; index < s.length; index++) {
+        for (int index = 0; index < spiciness.length; index++) {
             String expectedSpiciness = expected[index];
-            String actualSpiciness = s[index].toString();
+            String actualSpiciness = spiciness[index].toString();
             assertEquals(expectedSpiciness, actualSpiciness);
-            int actualOrdinal = s[index].ordinal();
+            int actualOrdinal = spiciness[index].ordinal();
             assertEquals(index, actualOrdinal);
         }
     }
