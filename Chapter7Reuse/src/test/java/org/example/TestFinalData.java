@@ -74,4 +74,15 @@ public class TestFinalData {
         // the class is used to retrieve the value because it has static in the accessor list
         assertEquals(33, fd1.getVAl_3().i);
     }
+
+    @Test
+    public void testArray() {
+        // an array is an Object in Java, so with the final keyword we cannot asign the array
+        // to another reference but we can change its elements
+        expected = new int[]{1, 11};
+        actual = new int[]{fd1.getA()[0], 0};
+        fd1.getA()[0] += 10;
+        actual[1] = fd1.getA()[0];
+        assertArrayEquals(expected, actual);
+    }
 }

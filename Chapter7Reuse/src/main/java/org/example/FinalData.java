@@ -63,6 +63,10 @@ public class FinalData {
         return FinalData.VAL_3;
     }
 
+    public int[] getA() {
+        return a;
+    }
+
     @Override
     public String toString() {
         return id + ": " + "i4 = " + i4 + ", INT_5 = " + INT_5;
