@@ -1,0 +1,21 @@
+In the Complete Decoupling Project we had an issue because the Applicator.apply() method would not work on any
+Filter object.  This happened because the original definition of Applicator.apply() was too tightly coupled to
+a Processor object.
+
+Ideally, Applicator.apply() should handle any Filter object because the Filter class has both name() and process()
+methods, and the arguments for both the name() and process() methods are the same for a StringProcessor and a Filter.
+
+In the case of Strings, a StringProcessor Class was defined because it needed to @Override the process() method from
+the Processor Class.  The method signature of the Processor class was "public Object process(Object input)".  The
+method signature in the StringProcessor class was "@Override public String process(Object input)".  This works because
+the process parameter remained an Object but the return type was updated to a String.  This is permitted because String
+ultimately inherits from Object, that is String is an Object.
+
+Now that Processor in an Interface, Filter can be adapted to conform to the Processor Interface.  This is where the
+FilterAdapter class comes in.  It implements the Processor Interface, thus Filter and all its sub-classes can be
+left unchanged.  The new FilterAdapter() constructor takes a Filter object as an argument.  However, since FilterAdapter
+implements the Processor Interface it is a Processor.  Thus, a new FilterAdapter can be passed to Applicator.apply() without
+breaking the apply interface.
+
+The FilterAdapter() class is an example of an "Adapter Pattern" as it takes the currently existing interface (Filter) and
+produces the desired interface (Processor).
