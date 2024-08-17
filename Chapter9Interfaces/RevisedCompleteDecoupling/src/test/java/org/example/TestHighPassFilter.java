@@ -25,7 +25,9 @@ public class TestHighPassFilter {
     public void testHighPassApplicatorApply() {
         String[] expectedStrings = new String[]{
             "Using Processor HighPass Waveform [id = 0]" + "\n",
-            "Using Processor HighPass Waveform [id = 1]" + "\n"
+            "Using Processor HighPass Waveform [id = 1]" + "\n",
+            "Using Processor HighPass Waveform [id = 2]" + "\n",
+            "Using Processor HighPass Waveform [id = 3]" + "\n"
         };
         String actualString = Applicator.apply(new FilterAdapter(new HighPass(5.25)), waveform);
         assertTrue(ArrayUtils.contains(expectedStrings, actualString));

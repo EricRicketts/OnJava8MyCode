@@ -25,7 +25,9 @@ public class TestLowPassFilter {
     public void testLowPassApplicatorApply() {
         String[] expectedStrings = new String[]{
             "Using Processor LowPass Waveform [id = 0]" + "\n",
-            "Using Processor LowPass Waveform [id = 1]" + "\n"
+            "Using Processor LowPass Waveform [id = 1]" + "\n",
+            "Using Processor LowPass Waveform [id = 2]" + "\n",
+            "Using Processor LowPass Waveform [id = 3]" + "\n"
         };
         String actualString = Applicator.apply(new FilterAdapter(new LowPass(25.00)), waveform);
         assertTrue(ArrayUtils.contains(expectedStrings, actualString));
