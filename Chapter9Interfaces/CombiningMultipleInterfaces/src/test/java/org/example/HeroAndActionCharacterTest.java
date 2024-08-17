@@ -7,12 +7,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HeroAndActionCharacterTest {
     private Hero hero;
+    private ReducedHero reducedHero;
     private ActionCharacter actionCharacter;
     private String expected, actual;
 
     @BeforeEach
     public void setUp() {
         hero = new Hero();
+        reducedHero = new ReducedHero();
         actionCharacter = new ActionCharacter();
     }
 
