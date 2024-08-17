@@ -1,0 +1,29 @@
+Comments on the "Complete Decoupling" Project
+
+This code is taken from the book "On Java 8", "Interfaces" Chapter (I numbered it chapter 9) and
+"Complete Decoupling" section.  My comments are the author's comments but with some more explanation.
+
+The most important concept to take away from this section is that in the process of design try not to
+unnecessarily constrain yourself by using too much inheritance.
+
+Whenever you use a method that works with a Class instead of an Interface, you are limited to using
+that Class or its SubClasses.
+
+Consider the following classes: Processor, Upcase, Downcase, Splitter, and Applicator
+
+The Processor class has as a method, process() this method is inherited from Classes Upcase, Downcase, and
+Splitter.  The Applicator Class has the apply() method which takes a Processor object, p and an Object s
+and applies the Object s to the Processor p and returns a String which captures the result of this operation.
+
+Note, by the results of TestApplicator, the results for apply() are different depending on the Processor p
+argument for apply().  The author noted that designing a method that behaves differently based on the
+argument passed in is called the "Strategy Pattern".  The method contains the fixed part of the algorithm,
+and the "Strategy" contains the part that varies.  In this case the "Strategy" is the object that is passed
+in as the first argument (new Upcase(), new Downcase(), or new Splitter()).
+
+Now here is where our design has a problem.  Applicator should be able to handle Filter and its subclasses.
+The author states this because the Filter Class has the same interface as the Processor Class.  What he meant
+by that is both Processor and Filter have "name()" and "process()" methods.
+
+However, currently the Applicator class is too tightly coupled to the Processor Class and its subclasses.
+Note the "apply()" method takes a Processor object as its first argument.
