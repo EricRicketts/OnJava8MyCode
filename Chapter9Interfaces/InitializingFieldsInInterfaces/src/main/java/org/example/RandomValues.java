@@ -13,3 +13,9 @@ public interface RandomValues {
 
     public double getChosenDoubleValue();
 }
+/*
+    this is an anti-pattern when it comes to defining a set of constants to be used in a global fashion.
+    Most importantly, an Interface is meant as a contract for defining behavior, with the code above no
+    behavioral contract is defined.  Another argument is namespace pollution, this interface name will
+    be in any class that implements our interface and in any of its sub-classes.
+*/
