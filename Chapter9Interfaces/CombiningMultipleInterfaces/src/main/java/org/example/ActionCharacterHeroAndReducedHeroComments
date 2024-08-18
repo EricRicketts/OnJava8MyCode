@@ -1,0 +1,10 @@
+In this case Hero combined multiple interfaces, which is allowed in Java.  If we look at the method
+definition: public class Hero extends ActionCharacter implements CanFight, CanSwim, CanFly.  ActionCharacter
+is a concrete class, though it does not have to be.  When one is both subclassing (extending) and implementing
+at the same time.  The "extends" must come first.  Also as we can see, we can implement more than one interface.
+
+In the case of the Hero class, we override each of the methods from CanFight (fight()), CanSwim (swim()), and
+CanFly(fly()).  In the case of ReducedHero, we only override CanFly(fly()) and CanSwim(swim()).  Since
+ReducedHero still extends ActionCharacter but only implements CanFly(fly()) and CanSwim(swim()) it inherits
+the fight() method from ActionCharacter.  The extended class methods take precedence over any method definitions
+from the interface implementations.
