@@ -2,6 +2,6 @@ package org.example;
 
 public class ActionCharacter {
     public String fight() {
-        return "Action Character fight()";
+        return "ActionCharacter.fight() ActionCharacter can fight";
     }
 }

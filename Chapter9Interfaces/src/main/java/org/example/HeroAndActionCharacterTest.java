@@ -45,4 +45,11 @@ public class HeroAndActionCharacterTest {
         actual = hero.fly();
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void testReducedHeroCanFly() {
+        expected = "ReducedHero.fly() ReducedHero can fly";
+        actual = reducedHero.fly();
+        assertEquals(expected, actual);:while ()
+    }
 }
