@@ -1,0 +1,17 @@
+What is the purpose of sealing classes and interfaces?
+
+The purpose is to allow the Base class or Base Interface to constrain what classes can be derived from it.
+This allows one to model a fixed set of kinds of values.  One ensures the "fixed set of kinds of values" by
+making the permitted classes "final".  This means no subclasses can be derived from the permitted classes.
+
+In my examples I have the permitted classes in different files, this is what the "permits" keyword allows.
+If one has the base class or interface in the same file as the permitted classes then the "permits" keyword
+is not needed.
+
+In the first book example (On Java 8) and in my first example the class Base was constrained to only two
+types of subclasses, D1 and D2.  Thus if we were to try "final class D3 extends Base" we would get a compiler
+error.  This kind of constraint ensures that future code only concern itself with D1 and D2 types.
+
+In my second example with Interface Ifc and classes Imp1 and Imp2 I showed that one can seal and Interface
+as well as a class.
+
