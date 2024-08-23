@@ -15,3 +15,10 @@ error.  This kind of constraint ensures that future code only concern itself wit
 In my second example with Interface Ifc and classes Imp1 and Imp2 I showed that one can seal and Interface
 as well as a class.
 
+In the third example I demonstrate one can also seal and Abstract class (AC and X is permitted).
+
+As demonstrated by Bottom, Level1, Level2, and Level3 one can also "seal" the permitted classes.  This does
+not violate the essence of constraining the types that can be instantiated. As Level2 is a type of Level1
+and Level3 is a type of Level2.  Furthermore, to begin with, Level1 is a type of Bottom.  So Java does
+allow sealed sets of subclasses.
+
