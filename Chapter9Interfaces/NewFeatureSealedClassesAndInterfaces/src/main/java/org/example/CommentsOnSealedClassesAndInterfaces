@@ -22,3 +22,10 @@ not violate the essence of constraining the types that can be instantiated. As L
 and Level3 is a type of Level2.  Furthermore, to begin with, Level1 is a type of Bottom.  So Java does
 allow sealed sets of subclasses.
 
+In the final demonstration I use the non-sealed keyword in the declaration of the Sub2 class.  In this case we
+see that Sub2 allows for the declaration of any number of subclasses.  This might seem to violate the
+restriction on the number of types one can create.  In reality, we strictly limit the immediate subclasses
+of the sealed class Super.  As such, Super only allows the direct subclasses of Sub1 and Sub2.  In my example
+we created the Any1 and Any2 classes however, these are subclasses fo Sub2 and Sub2 is one of the permitted
+classes of Super.  Thus Any1 and Any2 are types of Sub2.
+
