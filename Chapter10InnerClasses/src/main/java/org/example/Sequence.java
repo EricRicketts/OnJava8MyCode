@@ -1,7 +1,7 @@
 package org.example;
 
 public class Sequence {
-    private final String[] items;
+    private String[] items;
     private int next;
 
     public String[] getItems() {
