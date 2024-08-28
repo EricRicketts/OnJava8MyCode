@@ -15,3 +15,7 @@ public class TestDotNew {
         assertEquals(expected, actual);
     }
 }
+/*
+    When getting a reference to an object of the Inner class one needs a reference to the outer class.
+    Otherwise the Inner class object cannot be instantiated.
+*/
