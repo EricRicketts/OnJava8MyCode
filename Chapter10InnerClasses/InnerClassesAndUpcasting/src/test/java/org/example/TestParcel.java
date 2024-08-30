@@ -34,5 +34,14 @@ public class TestParcel {
 }
 /*
     This is a very interesting features of Inner classes.  In this case, we are in essence upcasting to the
-    Interfaces Contents and Destination.
+    Interfaces Contents and Destination.  Because The PContents inner class is private, its implementation
+    details are completely hidden from the client programmer.  PDestination is protected so access is only
+    allowed by classes in the same package and inheritors of Parcel.  A client programmer cannot downcast to a
+    private inner class, such as Parcel p = new Parcel(); Parcel.PContents = p.new PContents(); because the
+    inner class name cannot be accessed.  With respect to the protected inner class a client programmer can
+    only downcast to PDestination if you are in inheritor of Parcel.
+
+    One other thing about Inner Classes, as we can see from this example the access modifiers can be private
+    or protected in addition to public and package access.  Normal class access is restricted to public and
+    package access.
 */
