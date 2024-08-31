@@ -50,4 +50,20 @@ public class ParcelsTest {
         String actualValue = d.getLabel();
         assertEquals(expectedValue, actualValue);
     }
+
+    @Test
+    public void testContentsWithinParcel11() {
+        Contents contents = Parcel11.contents();
+        int expectedValue = 11;
+        int actualValue = contents.getValue();
+        assertEquals(expectedValue, actualValue);
+    }
+
+    @Test
+    public void testDestinationWithinParcel11() {
+        Destination destination = Parcel11.destination("Arlington");
+        String expectedValue = "Arlington";
+        String actualValue = destination.getLabel();
+        assertEquals(expectedValue, actualValue);
+    }
 }
