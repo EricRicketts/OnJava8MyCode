@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.Parcel11.ParcelDestination;
+import org.example.Parcel11.ParcelDestination.AnotherLevel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -71,12 +73,22 @@ public class ParcelsTest {
     }
 
     @Test
-    public void testParcel11StaticVariableX() {
+    public void testParcel11AndParcelDestinationStaticVariableX() {
         expectedValues = new int[]{10, 20};
         actualValues = new int[2];
-        actualValues[0] = Parcel11.ParcelDestination.x;
+        actualValues[0] = Parcel11.ParcelDestination.x = 10;
         Parcel11.ParcelDestination.x = 20;
         actualValues[1] = Parcel11.ParcelDestination.x;
+        assertArrayEquals(expectedValues, actualValues);
+    }
+
+    @Test
+    public void testParcelDestinationStaticVariableX() {
+        expectedValues = new int[]{10, 40};
+        actualValues = new int[2];
+        actualValues[0] = ParcelDestination.x = 10;
+        ParcelDestination.x = 40;
+        actualValues[1] = ParcelDestination.x;
         assertArrayEquals(expectedValues, actualValues);
     }
 
@@ -91,9 +103,19 @@ public class ParcelsTest {
     public void testParcel11AnotherLevelStaticVariableX() {
         expectedValues = new int[]{10, 30};
         actualValues = new int[2];
-        actualValues[0] = Parcel11.ParcelDestination.AnotherLevel.x;
+        actualValues[0] = Parcel11.ParcelDestination.AnotherLevel.x = 10;
         Parcel11.ParcelDestination.AnotherLevel.x = 30;
         actualValues[1] = Parcel11.ParcelDestination.AnotherLevel.x;
+        assertArrayEquals(expectedValues, actualValues);
+    }
+
+    @Test
+    public void testAnotherLevelStaticVariableX() {
+        expectedValues = new int[]{30, 60};
+        actualValues = new int[2];
+        actualValues[0] = AnotherLevel.x = 30;
+        AnotherLevel.x = 60;
+        actualValues[1] = AnotherLevel.x;
         assertArrayEquals(expectedValues, actualValues);
     }
 
@@ -103,4 +125,13 @@ public class ParcelsTest {
         actualValueString = Parcel11.ParcelDestination.AnotherLevel.f();
         assertEquals(expectedValueString, actualValueString);
     }
+
+    @Test
+    public void testAnotherLevelStaticFunctionF() {
+        expectedValueString = "f() within AnotherLevel";
+        actualValueString = AnotherLevel.f();
+        assertEquals(expectedValueString, actualValueString);
+    }
+
+
 }
