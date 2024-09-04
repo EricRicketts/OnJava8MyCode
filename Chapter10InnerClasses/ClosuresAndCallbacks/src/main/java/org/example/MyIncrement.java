@@ -5,5 +5,5 @@ public class MyIncrement {
         return "MyIncrement.this.increment()";
     }
 
-    public static String f(MyIncrement mi) { return  mi.increment(); }
+    public static String f(MyIncrement mi) { return mi.increment(); }
 }
