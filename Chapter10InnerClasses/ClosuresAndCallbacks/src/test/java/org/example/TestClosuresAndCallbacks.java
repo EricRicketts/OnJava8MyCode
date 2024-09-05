@@ -111,5 +111,27 @@ public class TestClosuresAndCallbacks {
     In the case of Callee2 we have a different implementation of the increment() method defined by
     the MyIncrement class which Callee2 has inherited.  Now in order to define a particular implementation
     of the increment() method from the Incrementable Interface, Callee2 has to define an Inner class, which
-    in this case is the Closure class.
+    in this case in the Closure class.
+
+    Note Class Closure does implement the Incremental Interface.  In so doing it makes a call to an
+    instance of the MyIncrement class and calls its increment().  As the author states by implementing
+    Incrementable increment(), the Closure class is providing a hook back into the Callee2 class, but it
+    is a "safe" hook as it only allows one to call increment() from MyIncrement.  The author notes in C++
+    this Incrementable reference could be a pointer which would then be far less restrictive and could lead
+    to reference errors.
+
+    So why is the Closure class a "Closure"?  Remember a "Closure" is a callable object that retains the
+    information from the scope where it was created.  So in the case of the "Closure" class, it is enclosing
+    the increment() method from the Callee2 class, in addition to the private variable i, which is
+    incremented during the call to increment().  Note during the call to increment() from Callee2 there is
+    also a callback to MyIncrement increment() method via "super.increment()".
+
+    A "callback" is where some other object is given a piece of information that allows it to call back to
+    the originating object at some later point in time.  In the case of the "Caller" class, it is given an
+    Incrementable call back reference.  But as we see the callback reference can vary depending on what
+    object was passed to the Caller class.  This when a Caller class instance executes the go() method
+    one can get different results.  In the test, which takes the example from the book, the Caller instance
+    twice calls the increment() method from the Callee1 class followed by a two time call to the increment()
+    method from the Callee2 class.
+
 */
