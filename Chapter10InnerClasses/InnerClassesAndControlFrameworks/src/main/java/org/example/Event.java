@@ -30,4 +30,6 @@ public abstract class Event {
     }
 
     public abstract void action();
+
+    public abstract void recordAction();
 }

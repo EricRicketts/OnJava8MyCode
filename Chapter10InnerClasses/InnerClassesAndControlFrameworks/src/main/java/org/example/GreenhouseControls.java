@@ -6,8 +6,20 @@ public class GreenhouseControls extends Controller {
     private boolean light = false;
     private boolean water = false;
     private String thermostat = "Day";
+    private String recordedControllerActions = "";
+
+    public String getRecordedControllerActions() {
+        return recordedControllerActions;
+    }
+
+    public void setRecordedControllerActions(String recordedControllerActions) {
+        this.recordedControllerActions =
+                this.recordedControllerActions.concat(recordedControllerActions);
+    }
+
 
     public class LightOn extends Event {
+        private final String lightOnString = "Greenhouse light is on\n";
         public LightOn(long delayTime) {
             super(delayTime);
         }
@@ -18,12 +30,18 @@ public class GreenhouseControls extends Controller {
         }
 
         @Override
+        public void recordAction() {
+            setRecordedControllerActions(lightOnString);
+        }
+
+        @Override
         public String toString() {
-            return "Greenhouse light is on";
+            return lightOnString;
         }
     }
 
     public class LightOff extends Event {
+        private final String lightOffString = "Greenhouse light is off\n";
         public LightOff(long delayTime) {
             super(delayTime);
         }
@@ -34,12 +52,18 @@ public class GreenhouseControls extends Controller {
         }
 
         @Override
+        public void recordAction() {
+            setRecordedControllerActions(lightOffString);
+        }
+
+        @Override
         public String toString() {
-            return "Greenhouse light is off";
+            return lightOffString;
         }
     }
 
     public class WaterOn extends Event {
+        private final String waterOnString = "Greenhouse water is on\n";
         public WaterOn(long delayTime) {
             super(delayTime);
         }
@@ -50,12 +74,18 @@ public class GreenhouseControls extends Controller {
         }
 
         @Override
+        public void recordAction() {
+            setRecordedControllerActions(waterOnString);
+        }
+
+        @Override
         public String toString() {
-            return "Greenhouse water is on";
+            return waterOnString;
         }
     }
 
     public class WaterOff extends Event {
+        private final String waterOffString = "Greenhouse water is off\n";
         public WaterOff(long delayTime) {
             super(delayTime);
         }
@@ -66,13 +96,18 @@ public class GreenhouseControls extends Controller {
         }
 
         @Override
+        public void recordAction() {
+            setRecordedControllerActions(waterOffString);
+        }
+
+        @Override
         public String toString() {
-            return "Greenhouse water is off";
+            return waterOffString;
         }
     }
 
-
     public class ThermostatNight extends Event {
+        private final String thermostatNightString = "Thermostat on night setting\n";
         public ThermostatNight(long delayTime) {
             super(delayTime);
         }
@@ -83,12 +118,18 @@ public class GreenhouseControls extends Controller {
         }
 
         @Override
+        public void recordAction() {
+            setRecordedControllerActions(thermostatNightString);
+        }
+
+        @Override
         public String toString() {
-            return "Thermostat on night setting";
+            return thermostatNightString;
         }
     }
 
     public class ThermostatDay extends Event {
+        private final String thermostatDayString = "Thermostat on day setting\n";
         public ThermostatDay(long delayTime) {
             super(delayTime);
         }
@@ -99,13 +140,19 @@ public class GreenhouseControls extends Controller {
         }
 
         @Override
+        public void recordAction() {
+            setRecordedControllerActions(thermostatDayString);
+        }
+
+        @Override
         public String toString() {
-            return "Thermostat on day setting";
+            return thermostatDayString;
         }
     }
 
     public class Bell extends Event {
         private final Long delayTimeInBell;
+        private final String bellString = "Bing!!\n";
         public Bell(long delayTime) {
             super(delayTime);
             delayTimeInBell = delayTime;
@@ -121,8 +168,65 @@ public class GreenhouseControls extends Controller {
         }
 
         @Override
+        public void recordAction() {
+            setRecordedControllerActions(bellString);
+        }
+
+        @Override
         public String toString() {
-            return "Bing!!";
+            return bellString;
+        }
+    }
+
+    public class Restart extends Event {
+        private Event[] eventsList;
+        private final String restartString = "Restarting System\n";
+        public Restart(long delayTime, Event[] eventsList) {
+            super(delayTime);
+            this.eventsList = eventsList;
+            for (Event event : eventsList) { addEvent(event); }
+        }
+
+        @Override
+        public void action() {
+            for(Event event : eventsList) {
+                event.start();
+                addEvent(event);
+            }
+            start();
+            addEvent(this);
+        }
+
+        @Override
+        public void recordAction() {
+            setRecordedControllerActions(restartString);
+        }
+
+        @Override
+        public String toString() {
+            return restartString;
+        }
+    }
+
+    public class Terminate extends Event {
+        private final String terminateString = "Terminating System\n";
+        public Terminate(long delayTime) {
+            super(delayTime);
+        }
+
+        @Override
+        public void action() {
+//            System.exit(0);
+        }
+
+        @Override
+        public void recordAction() {
+            setRecordedControllerActions(terminateString);
+        }
+
+        @Override
+        public String toString() {
+            return terminateString;
         }
     }
 }
