@@ -56,4 +56,18 @@ public class TestOverridingInnerClass {
         actual = eggYolk.f();
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void testBigEggGetYolk() {
+        expected = "BigEgg.Yolk()";
+        actual = bigEggYolk.getWhichYolk();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testBigEggYolkF() {
+        expected = "BigEgg.Yolk.f()";
+        actual = bigEggYolk.f();
+        assertEquals(expected, actual);
+    }
 }
