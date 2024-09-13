@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,12 +12,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ArrayListTest {
 
     private ArrayList<String> arrayList;
+    private List<String> subList;
     private String expected, actual;
     private String[] expectedValues, actualValues;
 
     @BeforeEach
     public void setUp() {
         arrayList = GenerateArrayList.returnArrayList();
+        subList = arrayList.subList(1, 4);
     }
 
     @Test
@@ -96,9 +99,56 @@ public class ArrayListTest {
         // "[Begin, Foo, Bar, FooBar, Fizz, Buzz, FizzBuzz, End]";
         // subList starts at first index given and goes up to but not including
         // the second index
-        List<String> subList = arrayList.subList(1, 4);
         actualValues = subList.toArray(new String[0]);
         expectedValues = new String[]{"Foo", "Bar", "FooBar"};
+        assertArrayEquals(expectedValues, actualValues);
+    }
+
+    @Test
+    public void testContainsAll() {
+        assertTrue(arrayList.containsAll(subList));
+    }
+
+    @Test
+    public void testAddAll() {
+        // adds at the end of the list
+        expectedValues = new String[]{
+                "Begin", "Foo", "Bar", "FooBar", "Fizz", "Buzz",
+                "FizzBuzz", "End", "Foo", "Bar", "FooBar"
+        };
+        arrayList.addAll(subList);
+        actualValues = arrayList.toArray(new String[0]);
+        assertArrayEquals(expectedValues, actualValues);
+    }
+
+    @Test
+    public void testAddAllInMiddleOfList() {
+        // "[Begin, Foo, Bar, FooBar, Fizz, Buzz, FizzBuzz, End]";
+        arrayList.addAll(6, subList);
+        expectedValues = new String[]{
+                "Begin", "Foo", "Bar", "FooBar",
+                "Fizz", "Buzz", "Foo", "Bar",
+                "FooBar", "FizzBuzz", "End"
+        };
+        actualValues = arrayList.toArray(new String[0]);
+        assertArrayEquals(expectedValues, actualValues);
+    }
+
+    @Test
+    public void testRetainAll() {
+        // retainAll returns true if the calling list is changed
+        // it causes the original list to keep this intersection of itself
+        // and the argument list passed to the method
+        // so it retained "Begin", "FooBar", "Fizz" and "FizzBuzz"
+        // it ignored "Last" and "Start"
+        List<String> retainList = Arrays.asList(
+                "Begin", "Last", "FooBar", "Start", "Fizz", "FizzBuzz"
+        );
+        assertTrue(arrayList.retainAll(retainList));
+        expectedValues = new String[]{
+                "Begin", "FooBar", "Fizz", "FizzBuzz"
+        };
+        actualValues = arrayList.toArray(new String[0]);
         assertArrayEquals(expectedValues, actualValues);
     }
 }
