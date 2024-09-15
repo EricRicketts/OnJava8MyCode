@@ -24,4 +24,9 @@ public class Cymric extends Pet {
     public void setAge(int age) {
         super.setAge(age);
     }
+
+    public Cymric(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
 }

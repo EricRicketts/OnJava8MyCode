@@ -24,4 +24,9 @@ public class Cat extends Pet {
     public void setAge(int age) {
         super.setAge(age);
     }
+
+    public Cat(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
 }
