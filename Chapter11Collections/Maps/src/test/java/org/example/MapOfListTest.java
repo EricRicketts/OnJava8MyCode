@@ -7,11 +7,12 @@ import org.junit.jupiter.api.Test;
 import java.io.OptionalDataException;
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MapOfListTest {
     private final Map<Person, List< ? extends Pet>> petPeople = new HashMap<>();
     private String expected, actual;
+    private String[] expectedValues, actualValues;
 
     @BeforeEach
     public void setUp() {
@@ -70,5 +71,22 @@ public class MapOfListTest {
         }
         Collections.sort(actualPetNames);
         assertArrayEquals(expectedPetNames, actualPetNames.toArray(new String[0]));
+    }
+
+    @Test
+    public void testGetSingleValue() {
+        expectedValues = new String[]{"Molly", "Spot"};
+        actualValues = new String[2];
+        for(Person person : petPeople.keySet()) {
+            if (person.getName().equals("Dawn")) {
+                int index = 0;
+                // get() here returns the list of pets
+                for(Pet pet : petPeople.get(person)) {
+                    actualValues[index] = pet.getName();
+                    index += 1;
+                }
+            }
+        }
+        assertArrayEquals(expectedValues, actualValues);
     }
 }
