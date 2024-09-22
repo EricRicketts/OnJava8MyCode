@@ -1,11 +1,11 @@
 package org.example;
 
-public class Pet {
+public class Person {
     private String name;
 
     abstract String getName() { return name; };
 
-    public Pet(String name;) {
+    public Person(String name;) {
         this.name = name;
     }
 }
