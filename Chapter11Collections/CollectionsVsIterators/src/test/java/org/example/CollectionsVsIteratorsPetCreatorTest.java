@@ -9,7 +9,7 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CollectionsVsIteratorsTest {
+public class CollectionsVsIteratorsPetCreatorTest {
 
     public static String display(Iterator<Pet> petIterator) {
         String petIteratorString;
@@ -89,7 +89,7 @@ public class CollectionsVsIteratorsTest {
     }
 
     @Test
-    public void testDisplayWithIterator() {
+    public void testDisplayWithCollection() {
         expectedValue =
                 """
                         Pet has name: Pet Chelsea
@@ -105,4 +105,37 @@ public class CollectionsVsIteratorsTest {
         actualValue = display(personPetMap.values());
         assertEquals(expectedValue, actualValue);
     }
+
+    @Test
+    public void testDisplayWithIterator() {
+        expectedValue =
+                """
+                        Pet has name: Pet Chelsea
+                        Pet has name: Pet Holden
+                        Pet has name: Pet Leon
+                        Pet has name: Pet Mike
+                        Pet has name: Pet Mitch
+                        Pet has name: Pet Moses
+                        Pet has name: Pet Peter
+                        Pet has name: Pet Ron
+                        Pet has name: Pet Steve
+                        """;
+        actualValue = display(personPetMap.values().iterator());
+        assertEquals(expectedValue, actualValue);
+    }
 }
+/*
+    For a great while I could not figure out why, when calling either of the two display()
+    methods I could not get the expectedValue and actualValues to match.  Originally, the
+    expectedValue was defined in the order of initialization in the PetCreator class.  It
+    seems once I got into either display() method and then made the assertEquals() call, the
+    order had changed from the initialization that took place in PetCreator.  When I checked
+    actualValue right after the assignment => actualValue = display(personPetMap.values().iterator());
+    and right before executing the assertion => assertEquals(expectedValue, actualValue) the actualValue
+    had the initialization value.  Once the assertion took place the failure stated the expectedValue
+    and actualValue were different strings, i.e., the characters were not in the same order.
+
+    So I was unable to find out what caused this juxtaposition of characters once the assertEquals() was
+    called.  The only way to fix this was to go into the display() methods and force a certain output.
+    I did this by soring the output, now everything works.
+*/

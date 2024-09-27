@@ -8,15 +8,15 @@ public class PersonCreator {
     List<Person> people = new ArrayList<>();
 
     public PersonCreator() {
-        people.add(new Person("Chelsea"));
-        people.add(new Person("Holden"));
-        people.add(new Person("Leon"));
-        people.add(new Person("Mike"));
-        people.add(new Person("Mitch"));
-        people.add(new Person("Moses"));
-        people.add(new Person("Peter"));
-        people.add(new Person("Ron"));
-        people.add(new Person("Steve"));
+        people.add(new Person("Person Chelsea"));
+        people.add(new Person("Person Holden"));
+        people.add(new Person("Person Leon"));
+        people.add(new Person("Person Mike"));
+        people.add(new Person("Person Mitch"));
+        people.add(new Person("Person Moses"));
+        people.add(new Person("Person Peter"));
+        people.add(new Person("Person Ron"));
+        people.add(new Person("Person Steve"));
     }
 
     List<Person> list(int numberOfPeople) { return people.subList(0, numberOfPeople); }
