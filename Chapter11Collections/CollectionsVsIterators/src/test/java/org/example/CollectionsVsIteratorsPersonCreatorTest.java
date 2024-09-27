@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CollectionsVsIteratorsPersonCreatorTest {
 
@@ -34,7 +35,31 @@ public class CollectionsVsIteratorsPersonCreatorTest {
     }
 
     private Map<Person, Pet> personPetMap;
-    String expectedValue, actualValue;
+    String actualValue;
+    private final String expectedValue =
+            """
+                        Person has name: Person Chelsea
+                        Person has name: Person Holden
+                        Person has name: Person Leon
+                        Person has name: Person Mike
+                        Person has name: Person Mitch
+                        Person has name: Person Moses
+                        Person has name: Person Peter
+                        Person has name: Person Ron
+                        Person has name: Person Steve
+                        """;
+    private final String expectedValuesFromMap =
+            """
+                        Person Chelsea
+                        Person Holden
+                        Person Leon
+                        Person Mike
+                        Person Mitch
+                        Person Moses
+                        Person Peter
+                        Person Ron
+                        Person Steve
+                        """;
     String[] expectedValues, actualValues;
 
     @BeforeEach
@@ -67,7 +92,7 @@ public class CollectionsVsIteratorsPersonCreatorTest {
             methods above.
         */
         actualValue = "";
-        expectedValue = """
+        String expectedValueTest = """
                 one two
                 three four
                 five six
@@ -84,43 +109,30 @@ public class CollectionsVsIteratorsPersonCreatorTest {
         for(String str : stringList) {
             actualValue = actualValue.concat(str);
         }
-        assertEquals(expectedValue, actualValue);
+        assertEquals(expectedValueTest, actualValue);
     }
 
     @Test
     public void testDisplayWithCollection() {
-        expectedValue =
-        """
-                        Person has name: Person Chelsea
-                        Person has name: Person Holden
-                        Person has name: Person Leon
-                        Person has name: Person Mike
-                        Person has name: Person Mitch
-                        Person has name: Person Moses
-                        Person has name: Person Peter
-                        Person has name: Person Ron
-                        Person has name: Person Steve
-                        """;
         actualValue = display(personPetMap.keySet());
         assertEquals(expectedValue, actualValue);
     }
 
     @Test
     public void testDisplayWithIterator() {
-        expectedValue =
-                """
-                        Person has name: Person Chelsea
-                        Person has name: Person Holden
-                        Person has name: Person Leon
-                        Person has name: Person Mike
-                        Person has name: Person Mitch
-                        Person has name: Person Moses
-                        Person has name: Person Peter
-                        Person has name: Person Ron
-                        Person has name: Person Steve
-                        """;
         actualValue = display(personPetMap.keySet().iterator());
         assertEquals(expectedValue, actualValue);
+    }
+
+    @Test
+    public void testPetNames() {
+        Collection<Person> personList = personPetMap.keySet();
+        List<String> expectedPersonList =
+                (List<String>) Arrays.asList(expectedValuesFromMap.split("\n"));
+        for(Person p : personList) {
+            String personName = p.getName();
+            assertTrue(expectedPersonList.contains(personName));
+        }
     }
 }
 /*

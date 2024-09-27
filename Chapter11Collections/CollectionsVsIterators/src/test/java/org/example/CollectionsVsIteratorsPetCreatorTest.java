@@ -35,7 +35,27 @@ public class CollectionsVsIteratorsPetCreatorTest {
     }
 
     private Map<Person, Pet> personPetMap;
-    String expectedValue, actualValue;
+    String actualValue;
+    private static final String expectedValue =
+            "Pet has name: Pet Abby\n" +
+            "Pet has name: Pet Bill\n" +
+            "Pet has name: Pet Charlie\n" +
+            "Pet has name: Pet Doug\n" +
+            "Pet has name: Pet Erin\n" +
+            "Pet has name: Pet Frank\n" +
+            "Pet has name: Pet Guy\n" +
+            "Pet has name: Pet Holly\n" +
+            "Pet has name: Pet Inca\n";
+        private static final String expectedValuesFromMap =
+            "Pet Abby\n" +
+            "Pet Bill\n" +
+            "Pet Charlie\n" +
+            "Pet Doug\n" +
+            "Pet Erin\n" +
+            "Pet Frank\n" +
+            "Pet Guy\n" +
+            "Pet Holly\n" +
+            "Pet Inca\n";
     String[] expectedValues, actualValues;
 
     @BeforeEach
@@ -68,7 +88,7 @@ public class CollectionsVsIteratorsPetCreatorTest {
             methods above.
         */
         actualValue = "";
-        expectedValue = """
+        String expectedValueTest = """
                 one two
                 three four
                 five six
@@ -85,44 +105,32 @@ public class CollectionsVsIteratorsPetCreatorTest {
         for(String str : stringList) {
             actualValue = actualValue.concat(str);
         }
-        assertEquals(expectedValue, actualValue);
+        assertEquals(expectedValueTest, actualValue);
     }
 
     @Test
     public void testDisplayWithCollection() {
-        expectedValue =
-                """
-                        Pet has name: Pet Chelsea
-                        Pet has name: Pet Holden
-                        Pet has name: Pet Leon
-                        Pet has name: Pet Mike
-                        Pet has name: Pet Mitch
-                        Pet has name: Pet Moses
-                        Pet has name: Pet Peter
-                        Pet has name: Pet Ron
-                        Pet has name: Pet Steve
-                        """;
         actualValue = display(personPetMap.values());
         assertEquals(expectedValue, actualValue);
     }
 
     @Test
     public void testDisplayWithIterator() {
-        expectedValue =
-                """
-                        Pet has name: Pet Chelsea
-                        Pet has name: Pet Holden
-                        Pet has name: Pet Leon
-                        Pet has name: Pet Mike
-                        Pet has name: Pet Mitch
-                        Pet has name: Pet Moses
-                        Pet has name: Pet Peter
-                        Pet has name: Pet Ron
-                        Pet has name: Pet Steve
-                        """;
         actualValue = display(personPetMap.values().iterator());
         assertEquals(expectedValue, actualValue);
     }
+
+    @Test
+    public void testPetNames() {
+        Collection<Pet> petList = personPetMap.values();
+        List<String> expectedPetList =
+                (List<String>) Arrays.asList(expectedValuesFromMap.split("\n"));
+        for(Pet p : petList) {
+            String petName = p.getName();
+            assertTrue(expectedPetList.contains(petName));
+        }
+    }
+
 }
 /*
     For a great while I could not figure out why, when calling either of the two display()

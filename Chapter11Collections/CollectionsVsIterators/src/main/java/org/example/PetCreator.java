@@ -8,15 +8,15 @@ public class PetCreator {
     List<Pet> pets = new ArrayList<>();
 
     public PetCreator() {
-        pets.add(new Cymric("Pet Chelsea"));
-        pets.add(new Hamster("Pet Holden"));
-        pets.add(new Labrador("Pet Leon"));
-        pets.add(new Manx("Pet Mike"));
-        pets.add(new Mouse("Pet Mitch"));
-        pets.add(new Mutt("Pet Moses"));
-        pets.add(new Pug("Pet Peter"));
-        pets.add(new Rat("Pet Ron"));
-        pets.add(new Siamese("Pet Steve"));
+        pets.add(new Cymric("Pet Abby"));
+        pets.add(new Hamster("Pet Bill"));
+        pets.add(new Labrador("Pet Charlie"));
+        pets.add(new Manx("Pet Doug"));
+        pets.add(new Mouse("Pet Erin"));
+        pets.add(new Mutt("Pet Frank"));
+        pets.add(new Pug("Pet Guy"));
+        pets.add(new Rat("Pet Holly"));
+        pets.add(new Siamese("Pet Inca"));
     }
 
     List<Pet> list(int numberOfPets) { return pets.subList(0, numberOfPets); }
