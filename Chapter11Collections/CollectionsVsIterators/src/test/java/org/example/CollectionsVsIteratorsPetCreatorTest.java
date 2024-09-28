@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CollectionsVsIteratorsPetCreatorTest {
 
@@ -36,6 +35,16 @@ public class CollectionsVsIteratorsPetCreatorTest {
 
     private Map<Person, Pet> personPetMap;
     String actualValue;
+    private static final String peopleString =
+        "Person Chelsea\n" +
+        "Person Holden\n" +
+        "Person Leon\n" +
+        "Person Mike\n" +
+        "Person Mitch\n" +
+        "Person Moses\n" +
+        "Person Peter\n" +
+        "Person Ron\n" +
+        "Person Steve\n";
     private static final String expectedValue =
             "Pet has name: Pet Abby\n" +
             "Pet has name: Pet Bill\n" +
@@ -129,6 +138,34 @@ public class CollectionsVsIteratorsPetCreatorTest {
             String petName = p.getName();
             assertTrue(expectedPetList.contains(petName));
         }
+    }
+
+    @Test
+    public void testContainsKeyAndValue() {
+        boolean[] expectedValues = {true, true};
+        boolean[] actualValues = new boolean[]{
+                personPetMap.containsKey(new Person("Person Mitch")),
+                personPetMap.containsValue(new Manx("Pet Doug"))
+        };
+        assertArrayEquals(expectedValues, actualValues);
+    }
+
+    @Test
+    public void testGetValueFromKey() {
+        assertTrue(personPetMap.containsKey(new Person("Person Holden")));
+        Hamster hamster = (Hamster) personPetMap.get(new Person("Person Holden"));
+        assertEquals(new Hamster("Pet Bill"), hamster);
+    }
+
+    @Test
+    public void testReplaceValue() {
+        String personName = "Person Ron";
+        String newPetName = "Pet FizzBuzz";
+        Rat rat = (Rat) personPetMap.get(new Person(personName));
+        personPetMap.replace(new Person(personName), new Pet(newPetName));
+        Pet pet = personPetMap.get(new Person(personName));
+        assertEquals(new Rat("Pet Holly"), rat);
+        assertEquals(new Pet("Pet FizzBuzz"), pet);
     }
 
 }
