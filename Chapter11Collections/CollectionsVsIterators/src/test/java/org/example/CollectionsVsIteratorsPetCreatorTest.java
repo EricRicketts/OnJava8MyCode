@@ -168,6 +168,25 @@ public class CollectionsVsIteratorsPetCreatorTest {
         assertEquals(new Pet("Pet FizzBuzz"), pet);
     }
 
+    @Test
+    public void testForEach() {
+        List<String> peopleNames = new ArrayList<>(Arrays.asList(peopleString.split("\n")));
+        List<String> petNames = new ArrayList<>(Arrays.asList(expectedValuesFromMap.split("\n")));
+        for(Map.Entry<Person, Pet> entry : personPetMap.entrySet()) {
+            Person person = entry.getKey();
+            Pet pet = entry.getValue();
+            assertTrue(peopleNames.contains(person.getName()));
+            assertTrue(petNames.contains(pet.getName()));
+        }
+    }
+
+    @Test
+    public void testRemove() {
+        assertEquals(9, personPetMap.size());
+        assertTrue(personPetMap.containsKey(new Person("Person Leon")));
+        personPetMap.remove(new Person("Person Leon"));
+        assertEquals(8, personPetMap.size());
+    }
 }
 /*
     For a great while I could not figure out why, when calling either of the two display()
