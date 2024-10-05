@@ -1,5 +1,5 @@
 package org.example;
 
 public interface Body {
-    String detailed(String heaad);
+    String detailed(String head);
 }
