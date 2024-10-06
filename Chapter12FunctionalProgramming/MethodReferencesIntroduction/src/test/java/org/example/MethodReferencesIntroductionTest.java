@@ -33,5 +33,21 @@ public class MethodReferencesIntroductionTest {
         */
     }
 
+    @Test
+    public void testHelloCall() {
+        expected = "Hello, Bob";
+        callable = MethodReferences::hello;
+        actual = callable.call("Bob");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testHelpCall() {
+        expected = "valuable information";
+        callable = new MethodReferences.Description("valuable")::help;
+        actual = callable.call("information");
+        assertEquals(expected, actual);
+    }
+
 
 }

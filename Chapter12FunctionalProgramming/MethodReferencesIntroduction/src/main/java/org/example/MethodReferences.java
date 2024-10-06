@@ -2,7 +2,7 @@ package org.example;
 
 public class MethodReferences {
     static String hello(String name) {
-        return "Hello " + name;
+        return "Hello, " + name;
     }
 
     static class Description {
